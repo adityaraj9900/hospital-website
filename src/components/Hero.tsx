@@ -1,249 +1,143 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Clock4, Star, ChevronDown, Stethoscope } from "lucide-react";
 import Image from "next/image";
+import { ArrowRight, Star } from "lucide-react";
 
-const trust = [
-  { icon: ShieldCheck, text: "JCI Accredited" },
-  { icon: Star, text: "#1 Ranked Hospital" },
-  { icon: Clock4, text: "24 / 7 Emergency" },
-  { icon: Stethoscope, text: "500+ Specialists" },
-];
-
-const heroImages = [
-  "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=85",
-  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=85",
-  "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=85",
-];
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, delay, ease: "easeOut" as const },
+});
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#07112a]"
-    >
-      {/* Background image */}
+    <section className="relative min-h-screen bg-[#0a0f1e] overflow-hidden flex flex-col justify-end">
+      {/* Full-bleed background image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=1920&q=85"
+          src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&q=90"
           alt="Hospital"
           fill
-          className="object-cover object-center opacity-20"
           priority
+          className="object-cover object-center opacity-30"
           sizes="100vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/60 to-transparent" />
       </div>
 
-      {/* Gradient mesh */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#07112a] via-[#091b40]/95 to-[#0b1f4a]" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-500/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[100px]" />
+      {/* Glow orbs */}
+      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-cyan-500/15 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-24 pb-12 w-full">
-        <div className="grid lg:grid-cols-[1fr_480px] gap-12 xl:gap-20 items-center">
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-20 pt-36 w-full">
+        <div className="grid lg:grid-cols-2 gap-10 items-end">
 
-          {/* Left — text */}
+          {/* Left — headline */}
           <div>
-            {/* Trust pills */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-wrap gap-2 mb-8"
-            >
-              {trust.map((t) => (
-                <div
-                  key={t.text}
-                  className="glass flex items-center gap-2 text-white text-xs font-medium px-3.5 py-1.5 rounded-full"
-                >
-                  <t.icon className="w-3.5 h-3.5 text-sky-400" />
-                  {t.text}
-                </div>
-              ))}
+            {/* Pill */}
+            <motion.div {...fadeUp(0.1)} className="inline-flex items-center gap-2 border border-white/15 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+              <span className="text-white/70 text-xs font-medium tracking-wide">Rated #1 Hospital · 2024</span>
             </motion.div>
 
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl sm:text-6xl xl:text-7xl font-extrabold text-white leading-[1.06] tracking-[-0.03em] mb-6"
+            <motion.h1 {...fadeUp(0.2)}
+              className="text-[clamp(2.8rem,6vw,5.5rem)] font-extrabold text-white leading-[1.04] tracking-[-0.03em] mb-6"
             >
-              Advanced Care,{" "}
-              <span
-                className="clip-text"
-                style={{ backgroundImage: "linear-gradient(135deg, #38bdf8, #818cf8, #c084fc)" }}
-              >
-                Exceptional
-              </span>
-              <br />
-              Outcomes.
+              Precision<br />
+              Medicine,<br />
+              <span className="grad-blue">Human Touch.</span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-slate-400 text-lg leading-relaxed max-w-[520px] mb-10"
+            <motion.p {...fadeUp(0.35)}
+              className="text-white/55 text-lg leading-relaxed max-w-md mb-10"
             >
-              World-renowned physicians. Robotic precision surgery. AI-powered diagnostics.
-              At MediCare Elite, every detail of your care is crafted to perfection.
+              Where cutting-edge science meets genuine compassion.
+              500+ world-class specialists dedicated to your best possible outcome.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3"
-            >
-              <motion.a
-                href="#appointment"
-                whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(14,165,233,0.5)" }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold text-[15px] px-7 py-4 rounded-2xl shadow-lg shadow-sky-500/30 transition-all"
+            <motion.div {...fadeUp(0.45)} className="flex flex-wrap gap-3">
+              <motion.a href="#contact" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-[#0066cc] hover:bg-blue-700 text-white font-semibold px-7 py-4 rounded-2xl shadow-xl shadow-blue-600/30 transition-colors"
               >
-                Book Appointment
-                <ArrowRight className="w-4.5 h-4.5" />
+                Book a Consultation <ArrowRight className="w-4 h-4" />
               </motion.a>
-              <motion.a
-                href="#services"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-2 bg-white/8 border border-white/15 text-white font-semibold text-[15px] px-7 py-4 rounded-2xl hover:bg-white/15 transition-all"
+              <motion.a href="#services" whileHover={{ scale: 1.02 }}
+                className="inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white font-medium px-7 py-4 rounded-2xl hover:bg-white/15 transition-colors"
               >
-                Explore Services
+                Our Services
               </motion.a>
             </motion.div>
 
-            {/* Quick stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-8 mt-12 pt-10 border-t border-white/10"
-            >
-              {[
-                { val: "150K+", label: "Patients Treated" },
-                { val: "98%", label: "Satisfaction Rate" },
-                { val: "25 Yrs", label: "Excellence" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <p className="text-2xl font-bold text-white mb-0.5">{s.val}</p>
-                  <p className="text-xs text-slate-500 font-medium">{s.label}</p>
+            {/* Review strip */}
+            <motion.div {...fadeUp(0.55)} className="flex items-center gap-4 mt-12 pt-10 border-t border-white/10">
+              <div className="flex -space-x-2.5">
+                {[
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
+                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80",
+                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
+                ].map((src, i) => (
+                  <div key={i} className="w-9 h-9 rounded-full border-2 border-[#0a0f1e] overflow-hidden relative">
+                    <Image src={src} alt="Patient" fill className="object-cover" sizes="36px" />
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="flex gap-0.5 mb-0.5">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
                 </div>
-              ))}
+                <p className="text-white/50 text-xs">Trusted by <span className="text-white font-semibold">150,000+</span> patients worldwide</p>
+              </div>
             </motion.div>
           </div>
 
-          {/* Right — image collage */}
+          {/* Right — stacked image cards */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="hidden lg:block relative h-[580px]"
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden lg:block relative h-[500px]"
           >
-            {/* Main large image */}
-            <motion.div
-              className="float absolute top-0 right-0 w-[300px] h-[380px] rounded-3xl overflow-hidden shadow-2xl shadow-black/40"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=85"
-                alt="Expert surgeon"
-                fill
-                className="object-cover object-top"
-                sizes="300px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#07112a]/60 to-transparent" />
-            </motion.div>
-
-            {/* Second image */}
-            <motion.div
-              className="float2 absolute bottom-0 left-0 w-[240px] h-[280px] rounded-3xl overflow-hidden shadow-2xl shadow-black/40"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=85"
-                alt="Medical technology"
-                fill
-                className="object-cover"
-                sizes="240px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#07112a]/60 to-transparent" />
-            </motion.div>
-
-            {/* Stat card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.8, type: "spring" }}
-              className="absolute top-[200px] left-[30px] glass rounded-2xl p-5 w-[180px] shadow-2xl"
-            >
-              <div className="text-3xl font-extrabold text-white mb-1">98%</div>
-              <div className="text-sky-400 text-xs font-semibold mb-2">Patient Satisfaction</div>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-6 h-1 rounded-full bg-sky-400" />
-                ))}
+            {/* Main card */}
+            <div className="float absolute right-0 top-0 w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
+              <Image src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=85" alt="Surgeon" fill className="object-cover object-top" sizes="300px" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="text-white/70 text-xs mb-1">Department of Surgery</p>
+                <p className="text-white font-bold text-lg">Robotic Precision Surgery</p>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Award card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1, type: "spring" }}
-              className="absolute top-[20px] left-[-10px] glass rounded-2xl px-4 py-3 flex items-center gap-3 w-[195px]"
-            >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shrink-0">
-                <Star className="w-5 h-5 text-white fill-white" />
+            {/* Second card */}
+            <div className="float2 absolute left-0 bottom-0 w-[270px] h-[250px] rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
+              <Image src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=85" alt="Lab" fill className="object-cover" sizes="270px" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute bottom-5 left-5">
+                <p className="text-white/70 text-xs mb-1">AI Diagnostics Lab</p>
+                <p className="text-white font-bold">Results in 60 min</p>
               </div>
-              <div>
-                <p className="text-white text-xs font-bold">#1 Ranked</p>
-                <p className="text-slate-400 text-[10px]">Best Hospital 2024</p>
-              </div>
-            </motion.div>
+            </div>
 
-            {/* Doctor available card */}
+            {/* Floating badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 }}
-              className="absolute bottom-[30px] right-[-10px] glass rounded-2xl px-4 py-3 flex items-center gap-3"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.9, type: "spring", stiffness: 200 }}
+              className="absolute top-[160px] left-[60px] bg-white rounded-2xl px-5 py-4 shadow-2xl"
             >
-              <div className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-emerald-400">
-                <Image
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&q=85"
-                  alt="Doctor"
-                  fill
-                  className="object-cover object-top"
-                  sizes="36px"
-                />
-              </div>
-              <div>
-                <p className="text-white text-xs font-bold">Dr. Mitchell</p>
-                <div className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-                  <span className="text-emerald-400 text-[10px] font-medium">Available now</span>
-                </div>
+              <p className="text-3xl font-extrabold text-zinc-900 leading-none">98%</p>
+              <p className="text-[#0066cc] text-xs font-bold mt-1">Patient Satisfaction</p>
+              <div className="flex gap-0.5 mt-2">
+                {[...Array(5)].map((_, i) => <div key={i} className="h-1 w-6 rounded-full bg-[#0066cc]" />)}
               </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-        >
-          <ChevronDown className="w-5 h-5 text-white/30" />
-        </motion.div>
-      </motion.div>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }

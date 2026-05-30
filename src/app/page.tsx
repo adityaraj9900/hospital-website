@@ -1,26 +1,26 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import Services from "@/components/Services";
-import About from "@/components/About";
-import Doctors from "@/components/Doctors";
+import Navbar      from "@/components/Navbar";
+import Hero        from "@/components/Hero";
+import Marquee     from "@/components/Marquee";
+import Features    from "@/components/Features";
+import Stats       from "@/components/Stats";
+import Doctors     from "@/components/Doctors";
 import Testimonials from "@/components/Testimonials";
-import Appointment from "@/components/Appointment";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import FAQ         from "@/components/FAQ";
+import CTABanner   from "@/components/CTABanner";
+import Footer      from "@/components/Footer";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
+      <Marquee />
+      <Features />
       <Stats />
-      <Services />
-      <About />
       <Doctors />
       <Testimonials />
-      <Appointment />
-      <Contact />
+      <FAQ />
+      <CTABanner />
       <Footer />
     </main>
   );
