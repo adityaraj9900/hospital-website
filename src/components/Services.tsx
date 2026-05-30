@@ -1,146 +1,156 @@
 "use client";
 import { motion } from "framer-motion";
-import { Heart, Brain, Eye, Bone, Baby, Activity, Stethoscope, Microscope, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 const services = [
   {
-    icon: Heart,
     title: "Cardiology",
-    description: "State-of-the-art cardiac care with minimally invasive procedures and 24/7 heart monitoring.",
-    image: "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=400&q=80",
-    color: "from-red-400 to-rose-600",
-    bg: "bg-red-50",
-    iconColor: "text-red-500",
+    tag: "Heart & Vascular",
+    image: "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=600&q=80",
+    accent: "#ef4444",
+    desc: "Minimally invasive cardiac procedures, 24/7 heart monitoring, and world-leading bypass surgery.",
   },
   {
-    icon: Brain,
     title: "Neurology",
-    description: "Advanced neurological diagnostics and treatment from world-leading brain specialists.",
-    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&q=80",
-    color: "from-purple-400 to-violet-600",
-    bg: "bg-purple-50",
-    iconColor: "text-purple-500",
+    tag: "Brain & Spine",
+    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80",
+    accent: "#8b5cf6",
+    desc: "Advanced neurological diagnostics, deep brain stimulation, and stroke intervention.",
   },
   {
-    icon: Eye,
-    title: "Ophthalmology",
-    description: "Laser eye surgery, cataract removal, and comprehensive vision care by expert surgeons.",
-    image: "https://images.unsplash.com/photo-1512684584886-f5b7aa946f38?w=400&q=80",
-    color: "from-sky-400 to-blue-600",
-    bg: "bg-sky-50",
-    iconColor: "text-sky-500",
-  },
-  {
-    icon: Bone,
     title: "Orthopedics",
-    description: "Joint replacement, sports injury treatment, and spine care with robotic-assisted surgery.",
-    image: "https://images.unsplash.com/photo-1597764690523-15bea4c581c9?w=400&q=80",
-    color: "from-amber-400 to-orange-600",
-    bg: "bg-amber-50",
-    iconColor: "text-amber-500",
+    tag: "Bone & Joint",
+    image: "https://images.unsplash.com/photo-1597764690523-15bea4c581c9?w=600&q=80",
+    accent: "#f59e0b",
+    desc: "Robotic-assisted joint replacement, sports injuries, and complex spinal reconstruction.",
   },
   {
-    icon: Baby,
-    title: "Pediatrics",
-    description: "Comprehensive child health services in a warm, child-friendly environment.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80",
-    color: "from-emerald-400 to-teal-600",
-    bg: "bg-emerald-50",
-    iconColor: "text-emerald-500",
-  },
-  {
-    icon: Activity,
-    title: "Emergency Care",
-    description: "Round-the-clock emergency response with the fastest triage times in the region.",
-    image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&q=80",
-    color: "from-indigo-400 to-blue-600",
-    bg: "bg-indigo-50",
-    iconColor: "text-indigo-500",
-  },
-  {
-    icon: Stethoscope,
-    title: "General Medicine",
-    description: "Holistic general healthcare, preventive screenings, and chronic disease management.",
-    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80",
-    color: "from-cyan-400 to-sky-600",
-    bg: "bg-cyan-50",
-    iconColor: "text-cyan-500",
-  },
-  {
-    icon: Microscope,
     title: "Oncology",
-    description: "Personalized cancer treatment combining immunotherapy, chemotherapy, and precision medicine.",
-    image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&q=80",
-    color: "from-pink-400 to-rose-600",
-    bg: "bg-pink-50",
-    iconColor: "text-pink-500",
+    tag: "Cancer Care",
+    image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=80",
+    accent: "#ec4899",
+    desc: "Personalized immunotherapy, precision radiation, and multidisciplinary tumour boards.",
+  },
+  {
+    title: "Ophthalmology",
+    tag: "Eye & Vision",
+    image: "https://images.unsplash.com/photo-1512684584886-f5b7aa946f38?w=600&q=80",
+    accent: "#0ea5e9",
+    desc: "LASIK, cataract surgery, retinal treatment, and corneal transplantation.",
+  },
+  {
+    title: "Pediatrics",
+    tag: "Children's Health",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80",
+    accent: "#10b981",
+    desc: "Comprehensive child health in a safe, nurturing environment designed for young patients.",
+  },
+  {
+    title: "Emergency",
+    tag: "24/7 Trauma",
+    image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80",
+    accent: "#f97316",
+    desc: "Fastest triage times in the region. Level I Trauma Centre staffed around the clock.",
+  },
+  {
+    title: "General Medicine",
+    tag: "Preventive Care",
+    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80",
+    accent: "#6366f1",
+    desc: "Holistic health assessments, chronic disease management, and executive health plans.",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-slate-50 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-sky-100 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-60" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl opacity-60" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14"
         >
-          <span className="inline-block bg-sky-100 text-sky-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            Medical Services
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-5 leading-tight">
-            World-Class Care{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
-              Across Every Specialty
+          <div>
+            <span className="inline-flex items-center gap-2 bg-sky-100 text-sky-700 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-4">
+              48 Specialties
             </span>
-          </h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            48 specialized departments powered by the latest medical technology and staffed by internationally trained physicians.
+            <h2 className="section-title text-slate-900">
+              Expert Care Across<br />
+              <span
+                className="clip-text"
+                style={{ backgroundImage: "linear-gradient(135deg, #0ea5e9, #6366f1)" }}
+              >
+                Every Specialty
+              </span>
+            </h2>
+          </div>
+          <p className="text-slate-500 text-[15px] leading-relaxed max-w-xs sm:text-right">
+            Powered by cutting-edge technology and internationally trained specialists.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, i) => (
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {services.map((s, i) => (
             <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
+              key={s.title}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              whileHover={{ y: -8 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-md shadow-slate-100 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 cursor-pointer"
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="group relative bg-white rounded-2xl overflow-hidden cursor-pointer card-hover border border-slate-100"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}
             >
-              <div className="relative h-36 overflow-hidden">
+              {/* Image */}
+              <div className="relative h-44 overflow-hidden">
                 <Image
-                  src={service.image}
-                  alt={service.title}
+                  src={s.image}
+                  alt={s.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-60 group-hover:opacity-70 transition-opacity`} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
-                    <service.icon className="w-7 h-7 text-white" />
+                {/* Overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+                  style={{ background: `linear-gradient(135deg, ${s.accent}88, ${s.accent}22)` }}
+                />
+                {/* Tag */}
+                <div className="absolute top-3 left-3">
+                  <span
+                    className="text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+                    style={{ background: s.accent }}
+                  >
+                    {s.tag}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-5">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-bold text-slate-900 text-[16px] group-hover:text-sky-600 transition-colors">
+                    {s.title}
+                  </h3>
+                  <div
+                    className="w-8 h-8 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0 shrink-0"
+                    style={{ background: `${s.accent}18`, color: s.accent }}
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
+                <p className="text-slate-400 text-[13px] leading-relaxed">{s.desc}</p>
               </div>
-              <div className="p-5">
-                <h3 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-sky-600 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">{service.description}</p>
-                <div className="flex items-center gap-1 text-sky-500 text-sm font-semibold group-hover:gap-2 transition-all">
-                  Learn more <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
+
+              {/* Bottom accent line */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                style={{ background: s.accent }}
+              />
             </motion.div>
           ))}
         </div>

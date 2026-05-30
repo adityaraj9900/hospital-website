@@ -1,158 +1,146 @@
 "use client";
 import { motion } from "framer-motion";
-import { CheckCircle2, Play } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-const highlights = [
-  "JCI-accredited hospital with international quality standards",
-  "Robotic surgery suites with da Vinci precision technology",
-  "AI-powered diagnostic labs for faster, accurate results",
-  "Multilingual staff and international patient services",
-  "Luxurious patient rooms with hotel-grade amenities",
-  "Dedicated research center with 100+ active clinical trials",
+const points = [
+  "JCI & ISO 9001 accredited with international quality standards",
+  "da Vinci robotic surgery suites for ultra-precision procedures",
+  "AI-powered diagnostics delivering results in under 60 minutes",
+  "100+ active clinical trials at our dedicated research campus",
+  "International patient concierge — visa, accommodation & translation",
+  "Luxurious private suites with hotel-grade amenities",
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Images side */}
+    <section id="about" className="py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
+
+          {/* Image mosaic */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative"
+            className="relative h-[540px]"
           >
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&q=85"
-                    alt="Hospital interior"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-44 rounded-2xl overflow-hidden shadow-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&q=85"
-                    alt="Medical technology"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="relative h-44 rounded-2xl overflow-hidden shadow-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=500&q=85"
-                    alt="Research lab"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
-                <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=500&q=85"
-                    alt="Doctor consultation"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
-              </div>
+            {/* Large top-right */}
+            <div className="absolute top-0 right-0 w-[58%] h-[58%] rounded-3xl overflow-hidden shadow-2xl shadow-slate-200">
+              <Image
+                src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=700&q=85"
+                alt="Modern hospital"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 30vw"
+              />
+            </div>
+            {/* Bottom-left */}
+            <div className="absolute bottom-0 left-0 w-[55%] h-[55%] rounded-3xl overflow-hidden shadow-2xl shadow-slate-200">
+              <Image
+                src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=85"
+                alt="Medical team"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 28vw"
+              />
+            </div>
+            {/* Top-left small */}
+            <div className="absolute top-0 left-0 w-[40%] h-[40%] rounded-3xl overflow-hidden shadow-xl shadow-slate-200">
+              <Image
+                src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&q=85"
+                alt="Research lab"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 30vw, 20vw"
+              />
+            </div>
+            {/* Bottom-right small */}
+            <div className="absolute bottom-0 right-0 w-[38%] h-[40%] rounded-3xl overflow-hidden shadow-xl shadow-slate-200">
+              <Image
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=85"
+                alt="Caring staff"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 30vw, 20vw"
+              />
             </div>
 
-            {/* Play button overlay */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <div className="w-16 h-16 bg-white rounded-full shadow-2xl flex items-center justify-center group">
-                <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-indigo-600 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-                </div>
-              </div>
-            </motion.button>
-
-            {/* Award badge */}
+            {/* Floating badge */}
             <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, type: "spring" }}
-              className="absolute -bottom-6 -right-4 bg-gradient-to-br from-sky-500 to-indigo-600 rounded-2xl p-5 shadow-2xl text-white"
+              transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-gradient-to-br from-sky-500 to-blue-700 rounded-2xl p-5 text-center shadow-2xl shadow-blue-400/40"
             >
-              <p className="text-4xl font-extrabold">25+</p>
-              <p className="text-sm font-medium opacity-90">Years of Excellence</p>
+              <div className="text-4xl font-extrabold text-white leading-none">25+</div>
+              <div className="text-sky-200 text-[11px] font-semibold mt-1 uppercase tracking-wider">Years of<br />Excellence</div>
             </motion.div>
           </motion.div>
 
-          {/* Text side */}
+          {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:pl-8"
           >
-            <span className="inline-block bg-sky-100 text-sky-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
-              About MediCare Elite
+            <span className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-5">
+              About Us
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-6">
-              Redefining{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
+
+            <h2 className="section-title text-slate-900 mb-6">
+              Redefining What{" "}
+              <span
+                className="clip-text"
+                style={{ backgroundImage: "linear-gradient(135deg, #0ea5e9, #6366f1)" }}
+              >
                 Healthcare
               </span>{" "}
-              Excellence
+              Looks Like
             </h2>
-            <p className="text-slate-500 text-lg leading-relaxed mb-6">
-              Since 1999, MediCare Elite has been at the forefront of medical innovation.
-              We combine world-class expertise with cutting-edge technology to deliver
-              care that goes beyond treatment — we deliver healing, dignity, and hope.
+
+            <p className="text-slate-500 text-[15px] leading-relaxed mb-4">
+              Founded in 1999, MediCare Elite has grown into a globally recognised centre of
+              medical excellence, welcoming patients from over 70 countries. Our philosophy is
+              simple: marry world-class clinical expertise with genuine human compassion.
             </p>
-            <p className="text-slate-500 leading-relaxed mb-8">
-              Our multidisciplinary approach brings together specialists from around the globe,
-              ensuring every patient receives a personalized treatment plan backed by the
-              latest evidence-based medicine and compassionate human care.
+            <p className="text-slate-500 text-[15px] leading-relaxed mb-8">
+              Every treatment plan is built around you — your genome, your lifestyle, your goals —
+              supported by a multidisciplinary team that does not stop until you are well.
             </p>
 
             <div className="space-y-3 mb-10">
-              {highlights.map((item, i) => (
+              {points.map((p, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 15 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.07 }}
                   className="flex items-start gap-3"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600 text-sm leading-relaxed">{item}</span>
+                  <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                  <span className="text-slate-600 text-sm">{p}</span>
                 </motion.div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <motion.a
                 href="#services"
-                whileHover={{ scale: 1.04 }}
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-semibold px-8 py-4 rounded-2xl text-center shadow-lg shadow-sky-200"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold text-[15px] px-7 py-4 rounded-2xl shadow-lg shadow-sky-400/25"
               >
-                Explore Services
+                Our Services <ArrowRight className="w-4 h-4" />
               </motion.a>
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="border-2 border-slate-200 text-slate-700 font-semibold px-8 py-4 rounded-2xl text-center hover:border-sky-300 hover:text-sky-600 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                className="inline-flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-700 font-semibold text-[15px] px-7 py-4 rounded-2xl hover:border-sky-300 hover:text-sky-600 transition-colors"
               >
                 Contact Us
               </motion.a>
