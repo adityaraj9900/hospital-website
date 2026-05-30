@@ -11,8 +11,8 @@ const cols = {
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-zinc-500">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 lg:py-20">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-14">
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-6">

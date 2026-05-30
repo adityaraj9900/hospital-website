@@ -14,8 +14,8 @@ const docs = [
 
 export default function Doctors() {
   return (
-    <section id="doctors" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="doctors" className="py-24 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14"

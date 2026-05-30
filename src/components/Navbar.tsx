@@ -26,7 +26,7 @@ export default function Navbar() {
           scrolled ? "bg-white/90 backdrop-blur-xl shadow-sm border-b border-zinc-100" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-[70px] flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 h-[70px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 bg-[#0066cc] rounded-xl flex items-center justify-center">

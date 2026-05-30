@@ -18,8 +18,8 @@ export default function Testimonials() {
   const r = reviews[i];
 
   return (
-    <section id="about" className="py-24 bg-[#f5f3ee]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="about" className="py-24 lg:py-32 bg-[#f5f3ee]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="text-center mb-16"
         >
